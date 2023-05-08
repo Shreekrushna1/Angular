@@ -1,0 +1,106 @@
+<section class="h-100 gradient-form shadow" style="background-color: #eee">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-xl-10">
+        <div class="card rounded-3 text-black">
+          <div class="row g-0">
+            <div class="col-lg-6">
+              <div class="card-body p-md-5 mx-md-4">
+                <div class="text-center">
+                  <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThxf0aaDA21va6t1ky8pxBUpdLP-EY7dcQZm2DnCD8&s"
+                    style="width: 185px"
+                    alt="logo"
+                  />
+                  <h4 class="mt-1 mb-5 pb-1"></h4>
+                </div>
+
+                <form [formGroup]="loginForm">
+                  <mat-form-field
+                    class="form-outline mb-4"
+                    appearance="fill"
+                    style="width: 100%"
+                  >
+                    <mat-label>Username</mat-label>
+                    <input
+                      matInput
+                      type="text"
+                      placeholder="Enter Full Name"
+                      formControlName="username"
+                    />
+                    <mat-error
+                      *ngIf="
+                        loginForm.get('username')?.hasError('required')
+                      "
+                    >
+                      Username is Required!
+                    </mat-error>
+                    <mat-error
+                      *ngIf="
+                        loginForm.get('username')?.hasError('minlength')
+                      "
+                    >
+                      Username should be atleast 5 characters long!
+                    </mat-error>
+                  </mat-form-field>
+
+                  <mat-form-field
+                    class="form-outline mb-4"
+                    appearance="fill"
+                    style="width: 100%"
+                  >
+                    <mat-label>Password</mat-label>
+                    <input
+                      matInput
+                      type="password"
+                      placeholder="Enter Password"
+                      formControlName="password"
+                    />
+                    <mat-error
+                      *ngIf="loginForm.get('password')?.hasError('required')"
+                    >
+                      Password is Required!
+                    </mat-error>
+                    <mat-error
+                      *ngIf="
+                        loginForm.get('password')?.hasError('minlength')
+                      "
+                    >
+                      Password should be atleast 8 characters long!
+                    </mat-error>
+                  </mat-form-field>
+<br />
+                  <button
+                    style="width: 100%"
+                    mat-raised-button
+                    color="primary"
+                    type="submit"
+                    [disabled]="!loginForm.valid"
+                    (click)="loginUser()"
+                  >
+                    Submit
+                  </button>
+                  <button
+                  class="mt-3"
+                    style="width: 100%"
+                    mat-raised-button
+                    color="primary"
+                    type="submit"
+                    routerLink="register"
+                  >
+                    Register
+                  </button>
+                </form>
+              </div>
+            </div>
+            <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
+              <div class="text-white px-3 py-4 p-md-5 mx-md-4">
+                <h1 class="lg-4">Login User</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,78 @@
+<mat-toolbar class="mat-elevation-z8">
+  <span>Admin Dashboard</span>
+  <span class="spacer"></span>
+  <button mat-raised-button color="primary" (click)="createBookDialog()" class="mx-3">Create Book</button>
+  <button mat-raised-button color="accent" (click)="logout()">Logout</button>
+</mat-toolbar>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-6">
+       <table class="table table-striped table-bordered table-hover mat-elevation-z8">
+    <thead class="text-center">
+      <tr>
+        <th colspan="4">Users Table</th>
+      </tr>
+      <tr>
+        <th scope="col">Username</th>
+        <th scope="col">Email</th>
+        <th scope="col">Role</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody class="text-center">
+      <tr *ngFor="let user of allUsers">
+        <td>
+          {{ user.username }}
+        </td>
+        <td>
+          {{ user.email }}
+        </td>
+        <td>
+          {{ user.role }}
+        </td>
+        <td>
+          {{ user.action }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+    </div>
+
+
+    <div class="col-md-6">
+       <table class="table table-striped table-bordered table-hover mat-elevation-z8">
+    <thead class="text-center">
+      <tr>
+        <th colspan="5">Books Table</th>
+      </tr>
+      <tr>
+        <th scope="col">Book Name</th>
+        <th scope="col">Author Name</th>
+        <th scope="col">Description</th>
+        <th scope="col">Price</th>
+        <th scope="col">Book Buyed Users</th>
+      </tr>
+    </thead>
+    <tbody class="text-center">
+      <tr *ngFor="let book of allBooks">
+        <td>
+          {{ book.bookName }}
+        </td>
+        <td>
+          {{ book.authorName }}
+        </td>
+        <td>
+          {{ book.bookDescription }}
+        </td>
+        <td>
+          {{  book.bookPrice }}
+        </td>
+        <td>
+          {{ getBookBuyers(book) }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+    </div>
+  </div>
+</div>

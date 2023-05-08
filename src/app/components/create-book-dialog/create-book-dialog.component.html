@@ -1,0 +1,127 @@
+<div class="container">
+    <h2 style="display: flex;justify-content: center; align-items: center;">Create Book Form</h2>
+    <form [formGroup]="booksForm">
+                      <mat-form-field
+                        class="form-outline mb-4"
+                        appearance="fill"
+                        style="width: 100%"
+                      >
+                        <mat-label>Book Name</mat-label>
+                        <input
+                          matInput
+                          type="text"
+                          placeholder="Enter Full Name"
+                          formControlName="bookName"
+                        />
+                        <mat-error
+                          *ngIf="
+                            booksForm.get('bookName')?.hasError('required')
+                          "
+                        >
+                          Book Name is Required!
+                        </mat-error>
+                        <mat-error
+                          *ngIf="
+                            booksForm.get('bookName')?.hasError('minlength')
+                          "
+                        >
+                          Book name should be atleast 5 characters long!
+                        </mat-error>
+                      </mat-form-field>
+    
+                      <mat-form-field
+                        class="form-outline mb-4"
+                        appearance="fill"
+                        style="width: 100%"
+                      >
+                        <mat-label>Author Name</mat-label>
+                        <input
+                          matInput
+                          type="text"
+                          placeholder="Enter Author Name"
+                          formControlName="authorName"
+                        />
+                        <mat-error
+                          *ngIf="booksForm.get('authorName')?.hasError('required')"
+                        >
+                        Author Name is Required!
+                    </mat-error>
+                        <mat-error
+                          *ngIf="
+                            booksForm.get('authorName')?.hasError('minlength')
+                          "
+                        >
+                          Author Name should be atleast 5 characters long!
+                        </mat-error>
+                      </mat-form-field>
+                      <mat-form-field
+                        class="form-outline mb-4"
+                        appearance="fill"
+                        style="width: 100%"
+                      >
+                        <mat-label>Book Description</mat-label>
+                        <input
+                          matInput
+                          type="text"
+                          placeholder="Enter Book Description"
+                          formControlName="bookDescription"
+                        />
+                        <mat-error
+                          *ngIf="booksForm.get('bookDescription')?.hasError('required')"
+                        >
+                        Book Description is Required!
+                    </mat-error>
+                        <mat-error
+                          *ngIf="
+                            booksForm.get('bookDescription')?.hasError('minlength')
+                          "
+                        >
+                          Book Description should be atleast 5 characters long!
+                        </mat-error>
+                      </mat-form-field>
+                      <mat-form-field
+                        class="form-outline mb-4"
+                        appearance="fill"
+                        style="width: 100%"
+                      >
+                        <mat-label>Book Price</mat-label>
+                        <input
+                          matInput
+                          type="number"
+                          placeholder="Enter Price"
+                          formControlName="bookPrice"
+                        />
+                        <mat-error
+                          *ngIf="booksForm.get('bookPrice')?.hasError('required')"
+                        >
+                        Book Price is Required!
+                    </mat-error>
+                        <mat-error
+                          *ngIf="
+                            booksForm.get('bookPrice')?.hasError('negativePrice')
+                          "
+                        >
+                         Book Price cannot be negative.
+                        </mat-error>
+                      </mat-form-field>
+    <br />
+                      <button
+                        style="width: 100%"
+                        mat-raised-button
+                        color="primary"
+                        type="submit"
+                        [disabled]="!booksForm.valid"
+                        (click)="createBook()"
+                      >
+                        Submit Create Book Form
+                      </button>
+                      <button
+                        style="width: 100%;margin-top: 10px;"
+                        mat-raised-button
+                        color="primary"
+                        (click)="closeBookDialog()"
+                      >
+                        Cancel Form
+                      </button>
+                    </form>
+</div>

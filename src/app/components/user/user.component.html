@@ -1,0 +1,29 @@
+<mat-toolbar class="mat-elevation-z8">
+  <span>User Dashboard</span>
+  <span class="spacer"></span>
+  <button mat-raised-button color="accent" (click)="logout()">Log Out</button>
+</mat-toolbar>
+
+<div class="text-center mt-5">
+  <h2>
+    Welcome
+    {{ username }}
+  </h2>
+</div>
+<div class="container" style="display: flex;justify-content: center;align-items: center;">
+  <div class="card" style="width: 400px;">
+    <div class="card-header">
+      Which Book You Want To Purchase,Please Select
+    </div>
+    <div class="card-body" style="width: 100%;">
+      <mat-select  [(value)]="selectedValue" value="none" class="form-select">
+        <mat-option value="none" disabled>Select Option</mat-option>
+        <mat-option *ngFor="let options of bookNames" [value]="options">{{options}}</mat-option>
+      </mat-select><br>
+    </div>
+    <div class="acrd-footer">
+      <button class="btn btn-primary mx-3 mb-2" (click)="buyBook()">Buy Book</button>
+    </div>
+  </div>
+</div>
+
